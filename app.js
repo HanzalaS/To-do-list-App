@@ -4,19 +4,21 @@ const bodyParser = require("body-parser");
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static("public"));
+
 app.set("view engine", "ejs");
-var items = [];
+var items = ["Buy Food", "Cook Food", "Eat Food"];
 
 app.get("/", function (req, res) {
-  var today = new Date();
+  let today = new Date();
 
-  var option = {
+  let option = {
     weekday: "long",
     day: "numeric",
     month: "long",
   };
 
-  var day = today.toLocaleDateString("en-US", option);
+  let day = today.toLocaleDateString("en-US", option);
 
   res.render("list", { kindOfDay: day, newListItem: items });
 });
