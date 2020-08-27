@@ -6,6 +6,16 @@
     <title>To Do</title>
   </head>
   <body>
-    <h1>It's a <%= kindOfDay %> and it is <%= selectDay %></h1>
+    <h1><%= kindOfDay %></h1>
+
+    <ul>
+      <li>Buy Food</li>
+      <li>Cook Food</li>
+      <li>Eat Food</li>
+    </ul>
+    <form action="/" method="POST">
+      <input id="todo" type="text" name="newItem" />
+      <button type="submit">Add Item</button>
+    </form>
   </body>
 </html>
