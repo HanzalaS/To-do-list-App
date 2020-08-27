@@ -5,6 +5,7 @@ const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
+var items = [];
 
 app.get("/", function (req, res) {
   var today = new Date();
@@ -17,11 +18,12 @@ app.get("/", function (req, res) {
 
   var day = today.toLocaleDateString("en-US", option);
 
-  res.render("list", { kindOfDay: day });
+  res.render("list", { kindOfDay: day, newListItem: items });
 });
 app.post("/", (req, res) => {
   const newItem = req.body.newItem;
-  res.send(newItem);
+  items.push(newItem);
+  res.redirect("/");
 });
 
 app.listen(3000, function () {
